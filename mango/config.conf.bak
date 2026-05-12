@@ -1,0 +1,107 @@
+# --- Appearance (MangoWC Syntax) ---
+borderpx=2
+gappih=5
+gappiv=5
+gappoh=20
+gappov=20
+border_radius=10
+no_radius_when_single=0
+
+# Colors (ARGB Format)
+bordercolor=0xffffff44
+focuscolor=0xffffffff
+
+# --- Animations ---
+animations=1
+animation_type_open=zoom
+zoom_initial_ratio=0.87
+animation_duration_open=400
+
+# --- Window Rules ---
+# Force Ghostty to float, center, and BE THIS EXACT SIZE (in pixels)
+windowrule=isfloating:1,appid:com.mitchellh.ghostty
+windowrule=iscenter:1,appid:com.mitchellh.ghostty
+windowrule=width:800,appid:com.mitchellh.ghostty
+windowrule=height:450,appid:com.mitchellh.ghostty
+monitorrule=name:HDMI-A-2,width:1920,height:1080,refresh:180,x:0,y:10
+
+# Add this near your mousebinds
+hotcorner=bottom_left,none
+
+# --- Hardware Keys (Function Keys) ---
+# Volume Control (Try using 0 for 'no modifier')
+# Volume UP (Keycode 123) - Forces unmute + increases volume
+bind=NONE,code:123,spawn,wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+
+# Volume DOWN (Keycode 122) - Forces unmute + decreases volume
+bind=NONE,code:122,spawn,wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+
+# Mute Toggle (Keycode 121)
+bind=NONE,code:121,spawn,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+# Brightness (Try using 0 here too)
+bind=0,XF86MonBrightnessUp,spawn,brightnessctl s 10%+
+bind=0,XF86MonBrightnessDown,spawn,brightnessctl s 10%-
+# --- Key Bindings ---
+bind=SUPER,T,spawn,ghostty --window-width=120 --window-height=32
+bind=SUPER,E,spawn,dolphin
+bind=SUPER,A,spawn,wofi --show drun
+bind=SUPER,W,spawn,/home/faxxshell/Downloads/zen/zen
+bind=SUPER,D,spawn,flatpak run io.github.gamingdoom.Datcord
+
+# Session & Window
+bind=SUPER,Q,killclient
+bind=SUPER,M,quit
+bind=SUPER,V,togglefloating
+
+# Screenshot
+bind=SUPER+SHIFT,S,spawn,~/.config/screenshot.sh
+
+# Focus
+bind=SUPER,Left,focusdir,left
+bind=SUPER,Right,focusdir,right
+bind=SUPER,Up,focusdir,up
+bind=SUPER,Down,focusdir,down
+
+# --- Tags (Workspaces) ---
+bind=SUPER,1,view,1
+bind=SUPER,2,view,2
+bind=SUPER,3,view,3
+bind=SUPER,4,view,4
+bind=SUPER,5,view,5
+bind=SUPER,6,view,6
+bind=SUPER,7,view,7
+bind=SUPER,8,view,8
+bind=SUPER,9,view,9
+
+# Move Window to Tag
+bind=SUPER+SHIFT,1,tag,1
+bind=SUPER+SHIFT,2,tag,2
+bind=SUPER+SHIFT,3,tag,3
+bind=SUPER+SHIFT,4,tag,4
+bind=SUPER+SHIFT,5,tag,5
+
+# Mouse Binds
+mousebind=SUPER,btn_left,moveresize,curmove
+mousebind=SUPER,btn_right,moveresize,curresize
+cursor_size=24
+cursor_theme=Adwaita
+
+# --- Autostart ---
+exec-once=waybar
+exec-once=swaync
+exec-once=rfkill unblock all
+exec-once=swaybg -i /home/faxxshell/Downloads/bg.jpg
+exec-once=systemctl --user restart pipewire pipewire-pulse wireplumber
+exec-once=pipewire
+exec-once=pipewire-pulse
+exec-once=wireplumber
+exec-once=/usr/libexec/polkit-mate-authentication-agent-1
+exec-once=mullvad-vpn
+
+
+# --- Input Settings ---
+input {
+    natural_scroll=1
+    tap_to_click=1
+    pointer_accel=0
+}

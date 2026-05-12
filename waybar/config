@@ -1,0 +1,37 @@
+{
+    "include": "/home/faxxshell/.config/waybar/modules.jsonc",
+    "position": "top",
+    "layer": "top",
+    "height": "36",
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "spacing": 0,
+    "fixed-center": true,
+
+    "modules-left": [
+        "custom/logo",
+        "dwl/tags"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "cpu",
+        "memory",
+	"wireplumber",
+        "custom/exit"
+    ],
+
+    "dwl/tags": {
+        "num-tags": 9,
+        "on-click": "activate"
+    },
+
+    "custom/logo": {
+        "format": "󱄅",
+        "on-click": "wofi --show drun"
+    }
+}
